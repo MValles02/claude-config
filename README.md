@@ -22,6 +22,10 @@ Luego:
    export DOKPLOY_API_KEY="..."
    ~/.claude/mcp-setup.sh
    ```
+   En Windows, `export` no aplica; usa PowerShell:
+   ```powershell
+   $env:DOKPLOY_URL="..."; $env:DOKPLOY_API_KEY="..."; powershell -ExecutionPolicy Bypass -File $HOME\.claude\mcp-setup.ps1
+   ```
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
 ## Sincronizar cambios
