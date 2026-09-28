@@ -1,9 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "extraKnownMarketplaces": {
-    "cloudflare": {"source": {"source": "github", "repo": "cloudflare/skills"}},
-    "ponytail": {"source": {"source": "github", "repo": "DietrichGebert/ponytail"}}
-  },
   "cleanupPeriodDays": 7,
   "permissions": {
     "allow": [],
@@ -43,6 +39,20 @@
     "playwright@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true
   },
+  "extraKnownMarketplaces": {
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
   "feedbackDrafts": "off",
   "modelSettings": {
     "claude-sonnet-5": {
@@ -56,5 +66,6 @@
   "theme": "auto",
   "editorMode": "normal",
   "verbose": true,
-  "autoContinueAtUsageLimit": false
+  "autoContinueAtUsageLimit": false,
+  "skipDangerousModePermissionPrompt": true
 }
