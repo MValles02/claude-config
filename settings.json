@@ -68,7 +68,7 @@
       "effortLevel": "medium"
     }
   },
-  "autoCompactWindow": 150000,
+  "autoCompactWindow": 200000,
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
   "autoUpdatesChannel": "latest",
