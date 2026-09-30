@@ -8,6 +8,7 @@ mcpServers:
       url: https://mcp.cloudflare.com/mcp
 model: sonnet
 effort: medium
+omitClaudeMd: true
 permissionMode: default
 maxTurns: 24
 color: orange

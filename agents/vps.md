@@ -4,6 +4,7 @@ description: Runs host-level commands on this VPS — system status, services, D
 tools: Bash, Read, Grep, Glob
 model: sonnet
 effort: medium
+omitClaudeMd: true
 permissionMode: default
 maxTurns: 24
 color: red

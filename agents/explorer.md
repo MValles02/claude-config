@@ -3,7 +3,7 @@ name: explorer
 description: Answers concrete, targeted questions about an unfamiliar repository area. Read-only; use only when code location or flow is unknown.
 tools: Read, Grep, Glob
 model: haiku
-effort: low
+omitClaudeMd: true
 maxTurns: 16
 color: cyan
 ---
