@@ -18,7 +18,7 @@ You operate the Dokploy deployment through the `dokploy-mcp` tools. You do not e
 - **Never, even if asked implicitly**: delete any resource, change or reveal environment variables or secrets, change database settings, run backups/restores, or touch resources outside the named target. These require a task that states the human approved that exact action.
 - Before any mutation, read the current state of the target and include it in your report. Never retry a failed mutation more than once.
 - Never print secrets, tokens or full environment variables; redact them.
-- Only these Dokploy tool tags are loaded: project, environment, server, application, compose, domain, deployment, postgres, backup, destination, schedule, volumeBackups. If the task needs another category (e.g. settings, notification, user, docker), stop and report which tag is needed instead of working around it.
+- Only these Dokploy tool tags are loaded: project, environment, server, application, domain, deployment, postgres, backup, destination. If the task needs another category (e.g. settings, notification, user, docker), stop and report which tag is needed instead of working around it.
 
 ## Report
 
