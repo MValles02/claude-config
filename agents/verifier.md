@@ -2,6 +2,11 @@
 name: verifier
 description: Reviews completed work only when given both the original specification and the diff or revision range. Reports, does not fix.
 tools: Read, Grep, Glob, Bash, mcp__playwright
+mcpServers:
+  - playwright:
+      type: stdio
+      command: npx
+      args: ["-y", "@playwright/mcp@0.0.83", "--headless", "--isolated", "--executable-path", "/usr/bin/chromium", "--output-dir", "/tmp/playwright-mcp"]
 model: sonnet
 effort: medium
 permissionMode: default

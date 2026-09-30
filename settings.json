@@ -6,7 +6,17 @@
     "PONYTAIL_SUBAGENT_MATCHER": "^(implementer|planner|verifier)$"
   },
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Bash(pnpm typecheck)",
+      "Bash(pnpm lint)",
+      "Bash(pnpm test)",
+      "Bash(pnpm check)",
+      "Bash(pnpm build)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh run view *)"
+    ],
     "deny": [
       "Agent(orchestrator)",
       "Bash(git push --force:*)",
@@ -18,23 +28,38 @@
       "Bash(git clean:*)",
       "Bash(git branch -D:*)",
       "Bash(git branch -d:*)",
-      "Read(**/.env)",
-      "Read(**/.env.local)",
-      "Read(**/.env.*.local)",
-      "Read(**/.env.production)",
       "Read(~/.claude/.credentials.json)",
       "Read(~/.claude.json)",
-      "Bash(cat .env:*)",
-      "Bash(cat .env.local:*)",
-      "Bash(cat .env.production:*)"
+      "Read(.env*)",
+      "Read(!.env.example)",
+      "Read(**/pnpm-lock.yaml)",
+      "Read(**/.next/**)",
+      "Read(**/.svelte-kit/**)",
+      "Read(**/new-database/**)",
+      "Bash(docker system prune *)",
+      "Bash(docker volume rm *)",
+      "Bash(docker volume prune *)",
+      "Bash(rm -rf /*)",
+      "Bash(reboot)",
+      "Bash(reboot *)",
+      "Bash(shutdown)",
+      "Bash(shutdown *)"
     ],
     "ask": [
       "Bash(git push:*)",
-      "Bash(gh pr merge:*)"
+      "Bash(gh pr merge:*)",
+      "Bash(gh secret *)",
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Bash(docker rm *)",
+      "Bash(docker compose down *)",
+      "Bash(systemctl stop *)",
+      "Bash(systemctl restart *)"
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "sonnet",
+  "disableClaudeAiConnectors": true,
   "workflowKeywordTriggerEnabled": false,
   "statusLine": {
     "type": "command",
@@ -44,9 +69,8 @@
   "enabledPlugins": {
     "cloudflare@cloudflare": true,
     "ponytail@ponytail": true,
-    "github@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "cloudflare": {
@@ -63,11 +87,6 @@
     }
   },
   "feedbackDrafts": "off",
-  "modelSettings": {
-    "claude-sonnet-5": {
-      "effortLevel": "medium"
-    }
-  },
   "autoCompactWindow": 200000,
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
