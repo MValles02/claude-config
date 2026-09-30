@@ -3,10 +3,14 @@
   "cleanupPeriodDays": 30,
   "syncClaudeAiSkills": false,
   "env": {
-    "PONYTAIL_SUBAGENT_MATCHER": "^(implementer|planner|verifier)$"
+    "PONYTAIL_SUBAGENT_MATCHER": "^implementer$"
   },
   "permissions": {
     "allow": [
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
       "Bash(pnpm typecheck)",
       "Bash(pnpm lint)",
       "Bash(pnpm test)",
@@ -54,7 +58,15 @@
       "Bash(docker rm *)",
       "Bash(docker compose down *)",
       "Bash(systemctl stop *)",
-      "Bash(systemctl restart *)"
+      "Bash(systemctl restart *)",
+      "Bash(rm -r *)",
+      "Bash(rm -fr *)",
+      "Bash(docker stop *)",
+      "Bash(docker restart *)",
+      "Bash(docker exec *)",
+      "Bash(docker compose up *)",
+      "Bash(systemctl disable *)",
+      "Bash(ufw *)"
     ],
     "defaultMode": "auto"
   },
