@@ -1,5 +1,5 @@
 ---
-name: operator
+name: dokploy
 description: Inspects and operates the Dokploy deployment (projects, applications, deployments, logs, domains) through the dokploy-mcp server. Use only for deployment/infrastructure tasks, never for code changes.
 tools: mcp__dokploy-mcp, Read, Grep, Glob
 model: sonnet
