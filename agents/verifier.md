@@ -6,7 +6,7 @@ model: sonnet
 effort: medium
 permissionMode: default
 maxTurns: 36
-color: orange
+color: blue
 ---
 
 You review finished work. You do not fix it: you report so someone else fixes

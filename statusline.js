@@ -91,7 +91,20 @@ function main(input) {
   }
 
   // context-used
-  const ctxPct = data.context_window?.used_percentage;
+  let ctxPct = data.context_window?.used_percentage;
+  const ctxSize = data.context_window?.context_window_size;
+  if (typeof ctxPct === "number" && typeof ctxSize === "number") {
+    try {
+      const { autoCompactWindow } = JSON.parse(
+        fs.readFileSync(path.join(require("os").homedir(), ".claude", "settings.json"), "utf8")
+      );
+      if (typeof autoCompactWindow === "number" && autoCompactWindow > 0) {
+        ctxPct = Math.min(((ctxPct / 100) * ctxSize) / autoCompactWindow, 1) * 100;
+      }
+    } catch {
+      // fall back to percentage of full window
+    }
+  }
   if (typeof ctxPct === "number") {
     parts.push(`${pctColor(ctxPct)}ctx ${ctxPct.toFixed(0)}%${RESET}`);
   }
