@@ -46,6 +46,8 @@ Run it when the task gives a local URL, or when the spec's acceptance criteria d
 Verdict: **APPROVED** / **CHANGES REQUIRED** / **REJECTED**.
 
 Then list the exact commands run with exit codes and any checks not run. For UI checks, list each check as PASS/FAIL with the URL, plus screenshot file paths; console and network errors count as problems. For each problem: severity, file:line, what is wrong, the evidence, and what should be done instead. Order problems by severity. No praise, no filler — if it is fine, say APPROVED and give a one-line summary of what you verified.
-Hard cap: an APPROVED verdict is 5 lines or fewer total. A verdict with issues lists each problem in 3 lines or fewer (severity, file:line + what's wrong, fix direction).
+Hard cap: an APPROVED verdict is 5 lines or fewer total, excluding the Out-of-scope findings section. A verdict with issues lists each problem in 3 lines or fewer (severity, file:line + what's wrong, fix direction).
+
+Problems you notice that are outside the task's scope (unrelated bug, security/a11y/perf issue, dead code, doc drift) go in a final section `## Out-of-scope findings`, max 5 items, one item per line: `title | severity high/med/low | file:line | evidence (one line) | suggested direction`. Only include things you have evidence for; no speculation. Write `None` if empty. Do not fix them, do not let them change your verdict/acceptance result, and do not file issues yourself. In-scope problems still drive the verdict; out-of-scope ones never do.
 
 Do not invent problems to justify the review. A clean diff gets approved.
