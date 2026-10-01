@@ -19,6 +19,8 @@
       "Bash(gh pr view *)",
       "Bash(gh pr list *)",
       "Bash(gh pr checks *)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
       "Bash(gh run view *)"
     ],
     "deny": [
