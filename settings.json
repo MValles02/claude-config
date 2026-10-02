@@ -32,13 +32,10 @@
       "Bash(git commit --no-verify:*)",
       "Bash(git reset --hard:*)",
       "Bash(git clean:*)",
-      "Bash(git branch -D:*)",
-      "Bash(git branch -d:*)",
       "Read(~/.claude/.credentials.json)",
       "Read(~/.claude.json)",
       "Read(.env*)",
       "Read(!.env.example)",
-      "Read(**/pnpm-lock.yaml)",
       "Read(**/.next/**)",
       "Read(**/.svelte-kit/**)",
       "Read(**/new-database/**)",
@@ -54,6 +51,8 @@
     "ask": [
       "Bash(git push:*)",
       "Bash(gh pr merge:*)",
+      "Bash(git branch -D:*)",
+      "Bash(git branch -d:*)",
       "Bash(gh secret *)",
       "Bash(rm -rf *)",
       "Bash(sudo *)",
@@ -72,8 +71,20 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "sonnet",
+  "model": "opus",
   "disableClaudeAiConnectors": true,
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ~/.claude/hooks/auto-title.js"
+          }
+        ]
+      }
+    ]
+  },
   "workflowKeywordTriggerEnabled": false,
   "statusLine": {
     "type": "command",
@@ -94,6 +105,11 @@
     }
   },
   "feedbackDrafts": "off",
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "autoCompactWindow": 200000,
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
