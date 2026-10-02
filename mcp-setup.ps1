@@ -9,3 +9,4 @@ if ([string]::IsNullOrEmpty($env:DOKPLOY_API_KEY)) {
 }
 
 claude mcp add dokploy-mcp -s user -e "DOKPLOY_URL=$env:DOKPLOY_URL" -e "DOKPLOY_API_KEY=$env:DOKPLOY_API_KEY" -e "DOKPLOY_ENABLED_TAGS=project,environment,server,application,domain,deployment,postgres,backup,destination" '--' cmd /c npx -y @dokploy/mcp@0.30.7
+claude mcp add codegraph -s user '--' codegraph serve --mcp

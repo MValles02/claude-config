@@ -21,7 +21,14 @@
       "Bash(gh pr checks *)",
       "Bash(gh issue list *)",
       "Bash(gh issue view *)",
-      "Bash(gh run view *)"
+      "Bash(gh run view *)",
+      "mcp__codegraph__codegraph_explore",
+      "mcp__plugin_engram_engram__mem_search",
+      "mcp__plugin_engram_engram__mem_context",
+      "mcp__plugin_engram_engram__mem_current_project",
+      "mcp__plugin_engram_engram__mem_get_observation",
+      "mcp__plugin_engram_engram__mem_save",
+      "mcp__plugin_engram_engram__mem_session_summary"
     ],
     "deny": [
       "Agent(orchestrator)",
@@ -94,13 +101,20 @@
   "enabledPlugins": {
     "ponytail@ponytail": true,
     "frontend-design@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": false
+    "skill-creator@claude-plugins-official": false,
+    "engram@engram": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
       "source": {
         "source": "github",
         "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "engram": {
+      "source": {
+        "source": "github",
+        "repo": "Gentleman-Programming/engram"
       }
     }
   },
