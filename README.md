@@ -34,6 +34,7 @@ Luego:
 - Engram v3.0.0: descarga el binario de GitHub releases (verifica el checksum) a `~/.local/bin`, luego:
   ```bash
   claude plugin marketplace add Gentleman-Programming/engram && claude plugin install engram
+  engram setup claude-code   # registra el MCP server (el plugin solo trae hooks); requiere jq y curl
   ```
 
 ## Sincronizar cambios
