@@ -1,6 +1,7 @@
 *
 !.gitignore
 !README.md
+!LICENSE
 !mcp-setup.sh
 !mcp-setup.ps1
 !settings.json
