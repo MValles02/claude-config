@@ -1,7 +1,7 @@
 ---
 name: orchestrator
 description: Main-session coordinator for complex, multi-phase work. Launch with `claude --agent orchestrator`; do not spawn as a subagent.
-tools: Agent(explorer, planner, implementer, verifier, dokploy, vps, cloudflare), Read, Grep, Glob, Bash, Edit, Write, WebSearch, WebFetch, SendMessage, Monitor, TaskStop, Skill, AskUserQuestion, mcp__codegraph__codegraph_explore, mcp__plugin_engram_engram__mem_search, mcp__plugin_engram_engram__mem_context, mcp__plugin_engram_engram__mem_current_project, mcp__plugin_engram_engram__mem_get_observation, mcp__plugin_engram_engram__mem_save, mcp__plugin_engram_engram__mem_session_summary
+tools: Agent(explorer, planner, implementer, verifier, dokploy, vps, cloudflare), Read, Grep, Glob, Bash, Edit, Write, WebSearch, WebFetch, SendMessage, Monitor, TaskStop, Skill, AskUserQuestion, mcp__codegraph__codegraph_explore, mcp__engram__mem_search, mcp__engram__mem_context, mcp__engram__mem_current_project, mcp__engram__mem_get_observation, mcp__engram__mem_save, mcp__engram__mem_session_summary
 model: sonnet
 effort: high
 permissionMode: default
