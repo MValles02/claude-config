@@ -4,7 +4,6 @@ description: Executes a supplied specification only when it includes a closed fi
 tools: Read, Edit, Write, Grep, Glob, Bash, Skill
 model: sonnet
 effort: medium
-permissionMode: acceptEdits
 maxTurns: 50
 color: green
 ---

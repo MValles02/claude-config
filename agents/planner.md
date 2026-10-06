@@ -4,7 +4,6 @@ description: Designs non-trivial solutions when architecture, API, data-model, U
 tools: Read, Grep, Glob, mcp__codegraph__codegraph_explore
 model: opus
 effort: medium
-permissionMode: plan
 maxTurns: 24
 color: blue
 ---

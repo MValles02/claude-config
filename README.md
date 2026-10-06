@@ -28,10 +28,17 @@ Luego:
    ```
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
+## PC + VPS
+
+- Claude Code corre en el PC (Windows); los repos viven en `~/code`.
+- El VPS se alcanza con `ssh vps` usando el OpenSSH de Windows (`C:/Windows/System32/OpenSSH/ssh.exe`); el `ssh` de Git Bash no ve el agente de Windows.
+- Solo el agente `vps` toca el servidor.
+- El Claude instalado en el VPS no se usa.
+
 ## Herramientas externas
 
 - CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.1`, luego `codegraph telemetry off` y `codegraph init` en cada repo. `.codegraph/` se ignora vía `~/.config/git/ignore`.
-- Engram v3.0.0: descarga el binario de GitHub releases (verifica el checksum) a `~/.local/bin`, luego:
+- Engram v3.1.0: descarga el binario de GitHub releases (verifica el checksum) a un directorio del PATH (en este PC, `~/go/bin`), luego:
   ```bash
   claude plugin marketplace add Gentleman-Programming/engram && claude plugin install engram
   engram setup claude-code   # registra el MCP server (el plugin solo trae hooks); requiere jq y curl

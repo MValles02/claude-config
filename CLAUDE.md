@@ -1,10 +1,11 @@
 # Global conventions
 
-Applies to every project under `~/projects`. Each repo's `AGENTS.md`/`CLAUDE.md` overrides this file.
+Applies to every project under `~/code` (`C:\Users\Mateo\code`). Each repo's `AGENTS.md`/`CLAUDE.md` overrides this file.
 
 - Code, identifiers, comments, commits and developer docs in English.
 - User-facing UI in Spanish (es-AR) unless a repo says otherwise.
 - JS/TS projects use pnpm; never switch package managers.
-- Deploys: Docker images deployed via Dokploy on this VPS. Host/infra documentation lives in `~/projects/infra` (`README.md`, `RUNBOOK.md`).
+- Deploys: Docker images deployed via Dokploy on the remote VPS (alias `vps`, reached only via the `vps` agent). Host/infra documentation lives in the `infra` repo (`README.md`, `RUNBOOK.md`); clone it into `~/code/infra` when needed.
+- On this Windows PC, use Windows OpenSSH (`C:/Windows/System32/OpenSSH/ssh.exe -o BatchMode=yes vps '<cmd>'`), not Git Bash's `ssh`, which cannot reach the Windows ssh-agent.
 - Never print or commit secrets. `.env*` files other than examples are never read or committed.
 - Git: feature branch (`feat/` `fix/` `chore/` `docs/`), Conventional Commits, PR to `main`, squash merge. Repo docs override.
