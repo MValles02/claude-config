@@ -38,7 +38,7 @@ Luego:
 ## Herramientas externas
 
 - CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.1`, luego `codegraph telemetry off` y `codegraph init` en cada repo. `.codegraph/` se ignora vía `~/.config/git/ignore`.
-- Engram v3.0.0: descarga el binario de GitHub releases (verifica el checksum) a `~/.local/bin`, luego:
+- Engram v3.1.0: descarga el binario de GitHub releases (verifica el checksum) a un directorio del PATH (en este PC, `~/go/bin`), luego:
   ```bash
   claude plugin marketplace add Gentleman-Programming/engram && claude plugin install engram
   engram setup claude-code   # registra el MCP server (el plugin solo trae hooks); requiere jq y curl
