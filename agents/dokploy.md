@@ -5,7 +5,6 @@ tools: mcp__dokploy-mcp, Read, Grep, Glob
 model: sonnet
 effort: medium
 omitClaudeMd: true
-permissionMode: default
 maxTurns: 40
 color: purple
 ---

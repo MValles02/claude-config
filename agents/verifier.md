@@ -6,10 +6,9 @@ mcpServers:
   - playwright:
       type: stdio
       command: npx
-      args: ["-y", "@playwright/mcp@0.0.83", "--headless", "--isolated", "--executable-path", "/usr/bin/chromium", "--output-dir", "/tmp/playwright-mcp"]
+      args: ["-y", "@playwright/mcp@0.0.83", "--headless", "--isolated", "--browser", "msedge", "--output-dir", "C:/Users/Mateo/AppData/Local/Temp/playwright-mcp"]
 model: sonnet
 effort: medium
-permissionMode: default
 maxTurns: 36
 color: blue
 ---
@@ -39,8 +38,8 @@ Run it when the task gives a local URL, or when the spec's acceptance criteria d
 - If the repo has a `test:e2e` script, first run the specs covering the change (`pnpm test:e2e <spec files>`; Playwright reuses the running dev server per its config). Use the Playwright MCP only for criteria no spec covers yet and for visual/layout checks.
 - `browser_run_code_unsafe` runs a function that receives only `page`: no `require`, `import`, `process` or `global`. Start it with `page.setDefaultTimeout(5000)` and prefer role/label locators with `exact: true` to avoid strict-mode violations.
 - Full interaction is allowed on local dev: navigate, click, fill and submit forms, run complete flows, resize the viewport, read the console and network requests.
-- To log in, read the project's section of `/home/mateo/.claude/dev-credentials.md`. Never echo the password in your report.
-- Keep context small. Prefer the accessibility snapshot over screenshots for checks. Take a screenshot only for visual or layout claims, and save it under `/tmp/playwright-mcp/` (the only directory the MCP server can write). Don't take a new snapshot after every action when the tool result already shows the change.
+- To log in, read the project's section of `C:/Users/Mateo/.claude/dev-credentials.md`. Never echo the password in your report.
+- Keep context small. Prefer the accessibility snapshot over screenshots for checks. Take a screenshot only for visual or layout claims, and save it under `C:/Users/Mateo/AppData/Local/Temp/playwright-mcp/` (the only directory the MCP server can write). Don't take a new snapshot after every action when the tool result already shows the change.
 - Check each UI acceptance criterion literally. Also report console errors, failed network requests (4xx/5xx), and broken layout at 390px and 1280px widths when the change is visual.
 
 ## Output
