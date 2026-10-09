@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "agent": "orchestrator",
   "cleanupPeriodDays": 30,
   "syncClaudeAiSkills": false,
   "env": {
@@ -27,6 +28,8 @@
       "mcp__engram__mem_context",
       "mcp__engram__mem_current_project",
       "mcp__engram__mem_get_observation",
+      "mcp__engram__mem_stats",
+      "mcp__engram__mem_timeline",
       "mcp__engram__mem_save",
       "mcp__engram__mem_session_summary",
       "mcp__engram__mem_capture_passive",
@@ -45,12 +48,14 @@
     ],
     "deny": [
       "Agent(orchestrator)",
-      "Bash(git push --force:*)",
       "Bash(git push -f:*)",
-      "Bash(git push --delete:*)",
-      "Bash(git push --no-verify:*)",
-      "Bash(git commit --no-verify:*)",
-      "Bash(git reset --hard:*)",
+      "Bash(git push *--force*)",
+      "Bash(git push * -f)",
+      "Bash(git push * -f *)",
+      "Bash(git push *--delete*)",
+      "Bash(git push *--no-verify*)",
+      "Bash(git commit *--no-verify*)",
+      "Bash(git reset *--hard*)",
       "Bash(git clean:*)",
       "Read(~/.claude/.credentials.json)",
       "Read(~/.claude.json)",
@@ -58,6 +63,11 @@
       "Read(**/.env.local)",
       "Read(**/.env.*.local)",
       "Read(**/.env.production)",
+      "Read(**/.env.prod)",
+      "Read(**/.env.development)",
+      "Read(**/.env.dev)",
+      "Read(**/.env.staging)",
+      "Read(**/.env.test)",
       "Read(**/.next/**)",
       "Read(**/.svelte-kit/**)",
       "Read(**/new-database/**)",
@@ -121,6 +131,17 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ~/.claude/hooks/guard-subagent-git.js"
+          }
+        ]
+      }
     ]
   },
   "workflowKeywordTriggerEnabled": false,
@@ -133,7 +154,8 @@
     "ponytail@ponytail": true,
     "frontend-design@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": false,
-    "engram@engram": true
+    "engram@engram": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
