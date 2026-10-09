@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "agent": "orchestrator",
-  "cleanupPeriodDays": 30,
+  "cleanupPeriodDays": 14,
   "syncClaudeAiSkills": false,
   "env": {
     "PONYTAIL_SUBAGENT_MATCHER": "^implementer$"
@@ -24,27 +23,7 @@
       "Bash(gh issue view *)",
       "Bash(gh run view *)",
       "mcp__codegraph__codegraph_explore",
-      "mcp__engram__mem_search",
-      "mcp__engram__mem_context",
-      "mcp__engram__mem_current_project",
-      "mcp__engram__mem_get_observation",
-      "mcp__engram__mem_stats",
-      "mcp__engram__mem_timeline",
-      "mcp__engram__mem_save",
-      "mcp__engram__mem_session_summary",
-      "mcp__engram__mem_capture_passive",
-      "mcp__engram__mem_compare",
-      "mcp__engram__mem_doctor",
-      "mcp__engram__mem_judge",
-      "mcp__engram__mem_list_projects",
-      "mcp__engram__mem_pin",
-      "mcp__engram__mem_review",
-      "mcp__engram__mem_save_prompt",
-      "mcp__engram__mem_session_end",
-      "mcp__engram__mem_session_start",
-      "mcp__engram__mem_suggest_topic_key",
-      "mcp__engram__mem_unpin",
-      "mcp__engram__mem_update"
+      "mcp__engram"
     ],
     "deny": [
       "Agent(orchestrator)",
@@ -153,7 +132,6 @@
   "enabledPlugins": {
     "ponytail@ponytail": true,
     "frontend-design@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": false,
     "engram@engram": true,
     "typescript-lsp@claude-plugins-official": true
   },
@@ -180,6 +158,7 @@
   "autoCompactWindow": 300000,
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
+  "agent": "orchestrator",
   "autoUpdatesChannel": "latest",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
