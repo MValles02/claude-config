@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "agent": "orchestrator",
-  "cleanupPeriodDays": 30,
+  "cleanupPeriodDays": 14,
   "syncClaudeAiSkills": false,
   "env": {
     "PONYTAIL_SUBAGENT_MATCHER": "^implementer$"
@@ -133,7 +132,6 @@
   "enabledPlugins": {
     "ponytail@ponytail": true,
     "frontend-design@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": false,
     "engram@engram": true,
     "typescript-lsp@claude-plugins-official": true
   },
@@ -160,6 +158,7 @@
   "autoCompactWindow": 300000,
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
+  "agent": "orchestrator",
   "autoUpdatesChannel": "latest",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
