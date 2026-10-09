@@ -16,21 +16,15 @@ Si `~/.claude` está vacío, clona directo ahí: `git clone git@github.com:MVall
 Luego:
 
 1. Ejecuta `/login` dentro de Claude Code para autenticarte.
-2. Exporta las variables de entorno necesarias y corre el script de MCP:
-   ```bash
-   export DOKPLOY_URL="..."
-   export DOKPLOY_API_KEY="..."
-   ~/.claude/mcp-setup.sh
-   ```
-   En Windows, `export` no aplica; usa PowerShell:
+2. Corre el script de MCP (registra CodeGraph): `~/.claude/mcp-setup.sh`, o en Windows:
    ```powershell
-   $env:DOKPLOY_URL="..."; $env:DOKPLOY_API_KEY="..."; powershell -ExecutionPolicy Bypass -File $HOME\.claude\mcp-setup.ps1
+   powershell -ExecutionPolicy Bypass -File $HOME\.claude\mcp-setup.ps1
    ```
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
 ## Cómo se trabaja
 
-- `settings.json` fija `"agent": "orchestrator"`: cada sesión arranca con el orquestador como líder. Describe el objetivo en lenguaje natural; él elige la ruta (respuesta directa, edición trivial, una tarea de `implementer` o el pipeline completo con `explorer`/`planner`/`implementer`/`verifier`) y los agentes de infra (`dokploy`, `vps`, `cloudflare`). Solo pregunta por decisiones de producto, alcance ambiguo o acciones de riesgo.
+- `settings.json` fija `"agent": "orchestrator"`: cada sesión arranca con el orquestador como líder. Describe el objetivo en lenguaje natural; él elige la ruta (respuesta directa, edición trivial, una tarea de `implementer` o el pipeline completo con `explorer`/`planner`/`implementer`/`verifier`) y los agentes de infra (`vps`, `cloudflare`). Las apps se despliegan con Dokploy en el VPS: `vps` lee su estado y logs, y los redeploys o cambios de configuración se hacen a mano en la UI de Dokploy (no hay agente ni MCP de Dokploy; en un PC que ya lo tenía, `claude mcp remove dokploy-mcp -s user`). Solo pregunta por decisiones de producto, alcance ambiguo o acciones de riesgo.
 - Al terminar un cambio de código en un repo con remoto de GitHub, crea rama, commitea, pushea y abre el PR (el push pide confirmación; nunca mergea). Di "sin commit" o "solo el diff" para evitarlo.
 - Para una sesión normal sin orquestador: `claude --agent claude`.
 - Hooks: `auto-title.js` nombra la sesión con Haiku en el primer prompt (sin cargar plugins, hooks ni MCP); `guard-subagent-git.js` bloquea escrituras de git/`gh` dentro de sub-agentes.
