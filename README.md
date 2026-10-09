@@ -45,6 +45,8 @@ Luego:
   engram setup claude-code   # registra el MCP server (el plugin solo trae hooks); requiere jq y curl
   ```
 
+- TypeScript LSP: `npm i -g typescript-language-server typescript`; el plugin `typescript-lsp` se activa desde `enabledPlugins`. Da diagnósticos tras cada edición y la herramienta `LSP` (definiciones, referencias, tipos).
+- Conectores de claude.ai: el orquestador solo ve los que lista en `tools:` (hoy Claude Docs). Para sumar otro, agrega su servidor (`mcp__claude_ai_<Nombre>`; míralo en `/mcp`) a `agents/orchestrator.md`.
 - `~/.claude/dev-credentials.md` (no versionado): logins de desarrollo por proyecto que usa el `verifier` para los chequeos de UI con Playwright. Cópialo desde el VPS en un PC nuevo.
 
 ## Sincronizar cambios
