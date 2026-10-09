@@ -99,7 +99,10 @@ function main(input) {
         fs.readFileSync(path.join(require("os").homedir(), ".claude", "settings.json"), "utf8")
       );
       if (typeof autoCompactWindow === "number" && autoCompactWindow > 0) {
-        ctxPct = Math.min(((ctxPct / 100) * ctxSize) / autoCompactWindow, 1) * 100;
+        // Auto-compact fires at 80% of (window - 20k output reserve): 144k for a 200k window.
+        // Measured from the autocompact_state event in Claude Code 2.1.295; re-check after upgrades.
+        const threshold = 0.8 * (Math.min(autoCompactWindow, ctxSize) - 20000);
+        ctxPct = Math.min(((ctxPct / 100) * ctxSize) / threshold, 1) * 100;
       }
     } catch {
       // fall back to percentage of full window

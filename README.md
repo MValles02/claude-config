@@ -28,6 +28,13 @@ Luego:
    ```
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
+## Cómo se trabaja
+
+- `settings.json` fija `"agent": "orchestrator"`: cada sesión arranca con el orquestador como líder. Describe el objetivo en lenguaje natural; él elige la ruta (respuesta directa, edición trivial, una tarea de `implementer` o el pipeline completo con `explorer`/`planner`/`implementer`/`verifier`) y los agentes de infra (`dokploy`, `vps`, `cloudflare`). Solo pregunta por decisiones de producto, alcance ambiguo o acciones de riesgo.
+- Al terminar un cambio de código en un repo con remoto de GitHub, crea rama, commitea, pushea y abre el PR (el push pide confirmación; nunca mergea). Di "sin commit" o "solo el diff" para evitarlo.
+- Para una sesión normal sin orquestador: `claude --agent claude`.
+- Hooks: `auto-title.js` nombra la sesión con Haiku en el primer prompt (sin cargar plugins, hooks ni MCP); `guard-subagent-git.js` bloquea escrituras de git/`gh` dentro de sub-agentes.
+
 ## PC + VPS
 
 - Claude Code corre en el PC (Windows); los repos viven en `~/code`.
@@ -44,14 +51,12 @@ Luego:
   engram setup claude-code   # registra el MCP server (el plugin solo trae hooks); requiere jq y curl
   ```
 
+- `~/.claude/dev-credentials.md` (no versionado): logins de desarrollo por proyecto que usa el `verifier` para los chequeos de UI con Playwright. Cópialo desde el VPS en un PC nuevo.
+
 ## Sincronizar cambios
 
-```bash
-git pull
-# ... hacer cambios ...
-git add -A && git commit -m "mensaje" && git push
-```
+Como en cualquier repo: rama `chore/...`, commit, PR a `main` (corre gitleaks) y squash merge. Después, `git pull` en `~/.claude`.
 
 ## Qué queda excluido a propósito
 
-Credenciales, historial de conversaciones, sesiones, cache y `settings.local.json` nunca se suben (ver `.gitignore`). Las skills se excluyen porque se sincronizan solas a través de la cuenta de claude.ai.
+Credenciales, historial de conversaciones, sesiones, cache y `settings.local.json` nunca se suben (ver `.gitignore`). Las skills locales (`~/.claude/skills`) tampoco se versionan, y `syncClaudeAiSkills: false` evita cargar las skills de la cuenta de claude.ai.
