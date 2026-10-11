@@ -30,4 +30,4 @@ You operate Cloudflare through the `mcp__cloudflare` tools. You do not edit code
 
 ## Report
 
-Return: actions taken (tool + target), resulting state, relevant excerpt (max 20 lines), and anything you refused and why. Under 200 words.
+The first line is exactly one of: `STATUS: DONE`, `STATUS: PARTIAL: <what remains>`, `STATUS: REFUSED: <reason>` (needs approval or outside your authority), `STATUS: FAILED: <reason>`. Return: actions taken (tool + target), resulting state, relevant excerpt (max 20 lines), and anything you refused and why. Under 200 words.
