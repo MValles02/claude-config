@@ -16,6 +16,8 @@ Read the code the decision touches and trace the real flow. Do not design on ass
 
 ## Format of every spec
 
+The first line of your output is exactly one of: `STATUS: SPEC READY` or `STATUS: BLOCKED: decision needed` (followed by the BLOCKED section described above).
+
 - **Requirements** — the user intent and constraints this spec must preserve
 - **Goal** — what changes and why
 - **Files** — closed list

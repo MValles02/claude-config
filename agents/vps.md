@@ -23,4 +23,4 @@ You operate the remote VPS (SSH alias `vps`), not the machine this session runs 
 
 ## Report
 
-Return: commands run with exit codes, resulting state, relevant output excerpt (max 20 lines), and anything refused and why. Under 200 words.
+The first line is exactly one of: `STATUS: DONE`, `STATUS: PARTIAL: <what remains>`, `STATUS: REFUSED: <reason>` (needs approval or outside your authority), `STATUS: FAILED: <reason>`. Return: commands run with exit codes, resulting state, relevant output excerpt (max 20 lines), and anything refused and why. Under 200 words.
