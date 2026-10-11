@@ -17,6 +17,7 @@ You execute a specification. You do not improve it, extend it, or reinterpret it
 - Do not refactor something ugly you happened to notice: list it under `## Out-of-scope findings` in the report and move on without touching it.
 - Do not change business logic, validation, error handling, security or accessibility unless the specification explicitly requires it.
 - Never run git write commands or gh (commit, push, branch, checkout, reset, rebase, stash — the orchestrator/main session owns them) or run migrations; read-only git (`status`, `diff`, `log`, `show`) is allowed. Run the repo's formatter on the files in your closed list only (e.g. `pnpm exec prettier --write <listed files>`), never on the whole repo; no other auto-fix commands unless the specification names them. Temp files go in your session scratchpad, never `/` or the repo.
+- Scripts longer than a few lines, or with nested quotes, go in a file: Write it to your session scratchpad, then run that file with Bash. Never inline long heredocs or `node -e`/`python -c` one-liners with nested quoting; Git Bash quoting on Windows breaks them ("unexpected EOF").
 - Preserve unrelated user changes. If a tool generates or modifies a file outside the closed list, stop and report it rather than cleaning up or expanding scope.
 
 ## When the spec doesn't fit

@@ -46,7 +46,7 @@ Luego:
   ```
 
 - TypeScript LSP: `npm i -g typescript-language-server typescript`; el plugin `typescript-lsp` se activa desde `enabledPlugins`. Da diagnósticos tras cada edición y la herramienta `LSP` (definiciones, referencias, tipos).
-- Conectores de claude.ai: el orquestador solo ve los que lista en `tools:` (hoy Claude Docs). Para sumar otro, agrega su servidor (`mcp__claude_ai_<Nombre>`; míralo en `/mcp`) a `agents/orchestrator.md`.
+- Herramientas del orquestador: usa `disallowedTools` (lista negra), así que hereda todo lo que agregue la app (navegador integrado, conectores de claude.ai, `ccd_*`, ToolSearch). Qué subagentes puede lanzar se controla con `permissions.deny` `Agent(...)` en `settings.json`; Claude in Chrome pide confirmación (`ask`).
 - `~/.claude/dev-credentials.md` (no versionado): logins de desarrollo por proyecto que usa el `verifier` para los chequeos de UI con Playwright. Cópialo desde el VPS en un PC nuevo.
 
 ## Sincronizar cambios

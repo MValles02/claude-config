@@ -22,11 +22,25 @@
       "Bash(gh issue list *)",
       "Bash(gh issue view *)",
       "Bash(gh run view *)",
+      "Bash(git fetch *)",
+      "Bash(git ls-remote *)",
+      "Bash(git switch *)",
+      "Bash(git checkout -b *)",
+      "Bash(gh run list *)",
+      "Bash(gh run watch *)",
+      "Bash(pnpm test:e2e)",
+      "Bash(pnpm test:e2e *)",
+      "Bash(docker compose ps *)",
+      "Bash(docker compose logs *)",
       "mcp__codegraph__codegraph_explore",
       "mcp__engram"
     ],
     "deny": [
       "Agent(orchestrator)",
+      "Agent(general-purpose)",
+      "Agent(Explore)",
+      "Agent(Plan)",
+      "Agent(statusline-setup)",
       "Bash(git push -f:*)",
       "Bash(git push *--force*)",
       "Bash(git push * -f)",
@@ -94,7 +108,8 @@
       "Bash(docker exec *)",
       "Bash(docker compose up *)",
       "Bash(systemctl disable *)",
-      "Bash(ufw *)"
+      "Bash(ufw *)",
+      "mcp__claude-in-chrome"
     ],
     "defaultMode": "auto"
   },
@@ -166,5 +181,6 @@
   "editorMode": "normal",
   "verbose": true,
   "switchModelsOnFlag": false,
-  "autoContinueAtUsageLimit": false
+  "autoContinueAtUsageLimit": false,
+  "agentPushNotifEnabled": true
 }
