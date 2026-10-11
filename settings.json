@@ -124,6 +124,14 @@
             "command": "node ~/.claude/hooks/auto-title.js"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codegraph.cmd prompt-hook"
+          }
+        ]
       }
     ],
     "PreToolUse": [
