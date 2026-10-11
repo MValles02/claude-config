@@ -32,6 +32,8 @@
       "Bash(pnpm test:e2e *)",
       "Bash(docker compose ps *)",
       "Bash(docker compose logs *)",
+      "Bash(docker info*)",
+      "Bash(docker ps*)",
       "mcp__codegraph__codegraph_explore",
       "mcp__engram"
     ],
@@ -41,6 +43,7 @@
       "Agent(Explore)",
       "Agent(Plan)",
       "Agent(statusline-setup)",
+      "Agent(claude)",
       "Bash(git push -f:*)",
       "Bash(git push *--force*)",
       "Bash(git push * -f)",
@@ -109,7 +112,16 @@
       "Bash(docker compose up *)",
       "Bash(systemctl disable *)",
       "Bash(ufw *)",
-      "mcp__claude-in-chrome"
+      "mcp__claude-in-chrome",
+      "Bash(*vps*docker restart*)",
+      "Bash(*vps*docker stop*)",
+      "Bash(*vps*docker rm *)",
+      "Bash(*vps*docker exec*)",
+      "Bash(*vps*docker compose up*)",
+      "Bash(*vps*docker compose down*)",
+      "Bash(*vps*systemctl restart*)",
+      "Bash(*vps*systemctl stop*)",
+      "Bash(*vps*systemctl disable*)"
     ],
     "defaultMode": "auto"
   },
@@ -122,6 +134,14 @@
           {
             "type": "command",
             "command": "node ~/.claude/hooks/auto-title.js"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codegraph.cmd prompt-hook"
           }
         ]
       }

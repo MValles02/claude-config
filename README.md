@@ -24,7 +24,7 @@ Luego:
 
 ## Cómo se trabaja
 
-- `settings.json` fija `"agent": "orchestrator"`: cada sesión arranca con el orquestador como líder. Describe el objetivo en lenguaje natural; él elige la ruta (respuesta directa, edición trivial, una tarea de `implementer` o el pipeline completo con `explorer`/`planner`/`implementer`/`verifier`) y los agentes de infra (`vps`, `cloudflare`). Las apps se despliegan con Dokploy en el VPS: `vps` lee su estado y logs, y los redeploys o cambios de configuración se hacen a mano en la UI de Dokploy (no hay agente ni MCP de Dokploy; en un PC que ya lo tenía, `claude mcp remove dokploy-mcp -s user`). Solo pregunta por decisiones de producto, alcance ambiguo o acciones de riesgo.
+- `settings.json` fija `"agent": "orchestrator"`: cada sesión arranca con el orquestador como líder. Describe el objetivo en lenguaje natural; él elige la ruta (respuesta directa, edición trivial, una tarea de `implementer` o el pipeline completo con `explorer`/`planner`/`implementer`/`verifier`) y los agentes de infra (`vps`, `cloudflare`). Las apps se despliegan con Dokploy en el VPS: `vps` lee estado y logs por SSH, y el orquestador opera la UI de Dokploy (https://dokploy.mateovalles.cloud) en el navegador integrado de la app con tu sesión; confirma cada clic irreversible en el chat y nunca escribe secretos ni variables de entorno. Solo pregunta por decisiones de producto, alcance ambiguo o acciones de riesgo.
 - Al terminar un cambio de código en un repo con remoto de GitHub, crea rama, commitea, pushea y abre el PR (el push pide confirmación; nunca mergea). Di "sin commit" o "solo el diff" para evitarlo.
 - Para una sesión normal sin orquestador: `claude --agent claude`.
 - Hooks: `auto-title.js` nombra la sesión con Haiku en el primer prompt (sin cargar plugins, hooks ni MCP); `guard-subagent-git.js` bloquea escrituras de git/`gh` dentro de sub-agentes.
@@ -35,11 +35,12 @@ Luego:
 - El VPS se alcanza con `ssh vps` usando el OpenSSH de Windows (`C:/Windows/System32/OpenSSH/ssh.exe`); el `ssh` de Git Bash no ve el agente de Windows.
 - Solo el agente `vps` toca el servidor.
 - El Claude instalado en el VPS no se usa.
+- Docker Desktop corre las bases de datos de desarrollo y los servicios de e2e. Los dev servers se abren con `preview_start` y `.claude/launch.json` de cada repo, visibles en el panel del navegador.
 
 ## Herramientas externas
 
-- CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.1`, luego `codegraph telemetry off` y `codegraph init` en cada repo. `.codegraph/` se ignora vía `~/.config/git/ignore`.
-- Engram v3.1.0: descarga el binario de GitHub releases (verifica el checksum) a un directorio del PATH (en este PC, `~/go/bin`), luego:
+- CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.2`, luego `codegraph telemetry off` y `codegraph init` en cada repo. `.codegraph/` se ignora vía `~/.config/git/ignore`.
+- Engram v3.2.1: descarga el binario de GitHub releases (verifica el checksum) a un directorio del PATH (en este PC, `~/go/bin`), luego:
   ```bash
   claude plugin marketplace add Gentleman-Programming/engram && claude plugin install engram
   engram setup claude-code   # registra el MCP server (el plugin solo trae hooks); requiere jq y curl
