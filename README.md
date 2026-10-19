@@ -27,7 +27,8 @@ Luego:
 - `settings.json` fija `"agent": "orchestrator"`: cada sesión arranca con el orquestador como líder. Describe el objetivo en lenguaje natural; él elige la ruta (respuesta directa, edición trivial, una tarea de `implementer` o el pipeline completo con `explorer`/`planner`/`implementer`/`verifier`) y los agentes de infra (`vps`, `cloudflare`). Las apps se despliegan con Dokploy en el VPS: `vps` lee estado y logs por SSH, y el orquestador opera la UI de Dokploy (https://dokploy.mateovalles.cloud) en el navegador integrado de la app con tu sesión; confirma cada clic irreversible en el chat y nunca escribe secretos ni variables de entorno. Solo pregunta por decisiones de producto, alcance ambiguo o acciones de riesgo.
 - Al terminar un cambio de código en un repo con remoto de GitHub, crea rama, commitea, pushea y abre el PR (el push pide confirmación; nunca mergea). Di "sin commit" o "solo el diff" para evitarlo.
 - Para una sesión normal sin orquestador: `claude --agent claude`.
-- Hooks: `auto-title.js` nombra la sesión con Haiku en el primer prompt (sin cargar plugins, hooks ni MCP); `guard-subagent-git.js` bloquea escrituras de git/`gh` dentro de sub-agentes.
+- Hooks: `guard-subagent-git.js` bloquea escrituras de git/`gh` dentro de sub-agentes. La app de escritorio nombra las sesiones sola.
+- Ponytail: `PONYTAIL_DEFAULT_MODE=off` evita que su hook de SessionStart inyecte las reglas en cada sesión; solo `implementer` las carga, con `skills: [ponytail:ponytail]` en su frontmatter.
 
 ## PC + VPS
 
@@ -39,7 +40,7 @@ Luego:
 
 ## Herramientas externas
 
-- CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.2`, luego `codegraph telemetry off` y `codegraph init` en cada repo. `.codegraph/` se ignora vía `~/.config/git/ignore`.
+- CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.2`, luego `codegraph telemetry off` y `codegraph init` en cada repo. Agrega `.codegraph/` a `~/.config/git/ignore`. Sin hook `prompt-hook`: inyectaría hasta ~9.000 caracteres en cada prompt; los agentes llaman a `codegraph_explore` cuando lo necesitan.
 - Engram v3.2.1: descarga el binario de GitHub releases (verifica el checksum) a un directorio del PATH (en este PC, `~/go/bin`), luego:
   ```bash
   claude plugin marketplace add Gentleman-Programming/engram && claude plugin install engram

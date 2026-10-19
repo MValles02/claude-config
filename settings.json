@@ -3,7 +3,7 @@
   "cleanupPeriodDays": 14,
   "syncClaudeAiSkills": false,
   "env": {
-    "PONYTAIL_SUBAGENT_MATCHER": "^implementer$"
+    "PONYTAIL_DEFAULT_MODE": "off"
   },
   "permissions": {
     "allow": [
@@ -128,24 +128,6 @@
   "model": "opus",
   "disableClaudeAiConnectors": false,
   "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node ~/.claude/hooks/auto-title.js"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "codegraph.cmd prompt-hook"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Bash",
