@@ -196,7 +196,6 @@
   "agent": "orchestrator",
   "autoUpdatesChannel": "latest",
   "autoMemoryEnabled": false,
-  "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
   "editorMode": "normal",
   "verbose": true,
