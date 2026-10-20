@@ -167,11 +167,6 @@
     }
   },
   "feedbackDrafts": "off",
-  "modelSettings": {
-    "claude-sonnet-5-5": {
-      "effortLevel": "high"
-    }
-  },
   "autoCompactWindow": 300000,
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
