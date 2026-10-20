@@ -21,6 +21,7 @@
       "Bash(gh pr checks *)",
       "Bash(gh issue list *)",
       "Bash(gh issue view *)",
+      "Bash(gh issue create *)",
       "Bash(gh run view *)",
       "Bash(git fetch *)",
       "Bash(git ls-remote *)",
