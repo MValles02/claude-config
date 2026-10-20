@@ -6,6 +6,8 @@ model: sonnet
 effort: medium
 maxTurns: 50
 color: green
+skills:
+  - ponytail:ponytail
 ---
 
 You execute a specification. You do not improve it, extend it, or reinterpret it.
