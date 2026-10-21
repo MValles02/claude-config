@@ -20,6 +20,7 @@ Luego:
    ```powershell
    powershell -ExecutionPolicy Bypass -File $HOME\.claude\mcp-setup.ps1
    ```
+   El MCP de Cloudflare se define solo dentro de `agents/cloudflare.md`; no lo registres a nivel usuario. Si `claude mcp get cloudflare` muestra "User config", ejecútalo a mano: `claude mcp remove cloudflare -s user`.
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
 ## Cómo se trabaja
@@ -28,6 +29,7 @@ Luego:
 - Al terminar un cambio de código en un repo con remoto de GitHub, crea rama, commitea, pushea y abre el PR (el push pide confirmación; nunca mergea). Di "sin commit" o "solo el diff" para evitarlo.
 - Para una sesión normal sin orquestador: `claude --agent claude`.
 - Hooks: `guard-subagent-git.js` bloquea escrituras de git/`gh` dentro de sub-agentes. La app de escritorio nombra las sesiones sola.
+- Permisos: se niegan las lecturas por shell de `.env*` (salvo `.env.example`), `.credentials.json`, `~/.secrets` y `~/.claude/backups`. Son patrones de texto, de mejor esfuerzo. El modo bypass está deshabilitado.
 - Ponytail: `PONYTAIL_DEFAULT_MODE=off` evita que su hook de SessionStart inyecte las reglas en cada sesión; solo `implementer` las carga, con `skills: [ponytail:ponytail]` en su frontmatter.
 
 ## PC + VPS
