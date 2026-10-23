@@ -40,7 +40,7 @@ Luego:
 
 ## Herramientas externas
 
-- CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.2`, luego `codegraph telemetry off` y `codegraph init` en cada repo. Agrega `.codegraph/` a `~/.config/git/ignore`. Sin hook `prompt-hook`: inyectaría hasta ~9.000 caracteres en cada prompt; los agentes llaman a `codegraph_explore` cuando lo necesitan.
+- CodeGraph: `npm i -g @colbymchenry/codegraph@1.6.2`, luego `codegraph telemetry off` y `codegraph init -y` en cada repo de `~/code`, y agrega `.codegraph/` a `~/.config/git/ignore` (el ignore global de git; no viene con este repo). Los worktrees bajo `<repo>/.claude/worktrees` usan el índice del checkout principal; refréscalo con `codegraph sync`. Sin hook `prompt-hook`: inyectaría hasta ~9.000 caracteres en cada prompt; los agentes llaman a `codegraph_explore` cuando lo necesitan.
 - Engram v3.2.1: descarga el binario de GitHub releases (verifica el checksum) a un directorio del PATH (en este PC, `~/go/bin`), luego:
   ```bash
   claude plugin marketplace add Gentleman-Programming/engram && claude plugin install engram
@@ -48,6 +48,7 @@ Luego:
   ```
 
 - TypeScript LSP: `npm i -g typescript-language-server typescript`; el plugin `typescript-lsp` se activa desde `enabledPlugins`. Da diagnósticos tras cada edición y la herramienta `LSP` (definiciones, referencias, tipos).
+- Mercado Pago: el plugin `mercadopago` queda en `false` en `enabledPlugins` (sus hooks corren en cada prompt y en casi cada herramienta). Solo se activa en gastar-app, en scope local: desde `~/code/gastar-app`, `claude plugin enable mercadopago@claude-plugins-official --scope local` (queda en su `.claude/settings.local.json`, sin versionar).
 - Herramientas del orquestador: usa `disallowedTools` (lista negra), así que hereda todo lo que agregue la app (navegador integrado, conectores de claude.ai, `ccd_*`, ToolSearch). Qué subagentes puede lanzar se controla con `permissions.deny` `Agent(...)` en `settings.json`; Claude in Chrome pide confirmación (`ask`).
 - Logins de prueba para los chequeos de UI: el `verifier` usa los usuarios que define cada repo (script de seed o helpers de e2e); no hay archivo de credenciales en `~/.claude`.
 
