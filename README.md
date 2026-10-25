@@ -16,10 +16,11 @@ Si `~/.claude` está vacío, clona directo ahí: `git clone git@github.com:MVall
 Luego:
 
 1. Ejecuta `/login` dentro de Claude Code para autenticarte.
-2. Corre el script de MCP (registra CodeGraph): `~/.claude/mcp-setup.sh`, o en Windows:
+2. Corre el script de MCP (registra CodeGraph y Cloudflare): `~/.claude/mcp-setup.sh`, o en Windows:
    ```powershell
    powershell -ExecutionPolicy Bypass -File $HOME\.claude\mcp-setup.ps1
    ```
+   Después, en una terminal `claude` interactiva: `/mcp` → `cloudflare` → Authenticate, y abre una sesión nueva. Cloudflare queda a nivel usuario porque un MCP definido dentro de un agente no puede completar OAuth; solo lo usa el agente `cloudflare` (que lo referencia por nombre) y el orquestador lo tiene en `disallowedTools`.
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
 ## Cómo se trabaja
