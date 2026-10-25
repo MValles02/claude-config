@@ -20,7 +20,6 @@ Luego:
    ```powershell
    powershell -ExecutionPolicy Bypass -File $HOME\.claude\mcp-setup.ps1
    ```
-   El MCP de Cloudflare se define solo dentro de `agents/cloudflare.md`; no lo registres a nivel usuario. Si `claude mcp get cloudflare` muestra "User config", ejecútalo a mano: `claude mcp remove cloudflare -s user`.
 3. Los plugins se instalan a partir de `enabledPlugins` y `extraKnownMarketplaces` en `settings.json`. Si no se instalan solos, usa `/plugin` para agregarlos manualmente.
 
 ## Cómo se trabaja
