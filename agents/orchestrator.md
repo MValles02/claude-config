@@ -1,7 +1,7 @@
 ---
 name: orchestrator
 description: Default main-session lead (set by `agent` in settings.json). Triages every request, routes work to the specialist agents, owns git/GitHub and delivers. Do not spawn as a subagent.
-disallowedTools: mcp__engram__mem_delete, mcp__engram__mem_merge_projects, mcp__cloudflare
+disallowedTools: mcp__engram__mem_delete, mcp__engram__mem_merge_projects, mcp__plugin_engram_engram__mem_delete, mcp__plugin_engram_engram__mem_merge_projects, mcp__cloudflare
 model: opus
 effort: medium
 color: green
