@@ -28,6 +28,7 @@ Luego:
 - Al terminar un cambio de código en un repo con remoto de GitHub, crea rama, commitea, pushea y abre el PR (el push pide confirmación; nunca mergea). Di "sin commit" o "solo el diff" para evitarlo.
 - Para una sesión normal sin orquestador: `claude --agent claude`.
 - Hooks: `guard-subagent-git.js` (Bash y PowerShell) tokeniza el comando (wrappers, payloads de `-c`, opciones globales de git) y solo permite una lista de git/`gh` de solo lectura; subcomandos desconocidos y alias cuentan como escrituras, y ante un error de parseo en un sub-agente deniega. Tests en `tests/guard-cases.mjs` (`node tests/guard-cases.mjs`), que corre `ci.yml`. La app de escritorio nombra las sesiones sola.
+- Permisos: se niegan las lecturas por shell de `.env*` (salvo `.env.example`), `.credentials.json`, `~/.secrets` y `~/.claude/backups`. Son patrones de texto, de mejor esfuerzo. El modo bypass está deshabilitado.
 - Ponytail: `PONYTAIL_DEFAULT_MODE=off` evita que su hook de SessionStart inyecte las reglas en cada sesión; solo `implementer` las carga, con `skills: [ponytail:ponytail]` en su frontmatter.
 
 ## PC + VPS
