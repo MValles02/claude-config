@@ -2,7 +2,8 @@
 name: explorer
 description: Answers concrete, targeted questions about an unfamiliar repository area. Read-only; use only when code location or flow is unknown.
 tools: Read, Grep, Glob, mcp__codegraph__codegraph_explore
-model: haiku
+model: sonnet
+effort: low
 omitClaudeMd: true
 maxTurns: 16
 color: cyan
