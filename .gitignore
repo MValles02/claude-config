@@ -15,3 +15,5 @@
 !hooks/**
 !tests/
 !tests/**
+!scripts/
+!scripts/**
