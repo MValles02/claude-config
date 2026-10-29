@@ -36,7 +36,14 @@
       "Bash(docker info*)",
       "Bash(docker ps*)",
       "mcp__codegraph__codegraph_explore",
-      "mcp__engram"
+      "mcp__engram",
+      "Bash(git push:*)",
+      "Bash(node ~/.claude/scripts/merge-develop-without-ci.mjs *)",
+      "Bash(node C:/Users/Mateo/.claude/scripts/merge-develop-without-ci.mjs *)",
+      "Bash(docker build *)",
+      "Bash(docker push ghcr.io/mvalles02/*)",
+      "Bash(gh variable get *)",
+      "mcp__ccd_pr__set_auto_merge"
     ],
     "deny": [
       "Agent(orchestrator)",
@@ -175,7 +182,6 @@
       "Bash(*vps*sudoers*)"
     ],
     "ask": [
-      "Bash(git push:*)",
       "Bash(gh pr merge:*)",
       "Bash(git branch -D:*)",
       "Bash(git branch -d:*)",
