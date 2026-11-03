@@ -15,3 +15,13 @@
 !hooks/**
 !tests/
 !tests/**
+
+!.gitattributes
+!.npmrc
+!package.json
+!pnpm-lock.yaml
+!.githooks/
+!.githooks/**
+!docs/
+!docs/**
+node_modules/
