@@ -1,0 +1,30 @@
+name: Auto-merge
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review]
+
+permissions: {}
+
+jobs:
+  enable:
+    # Same-repo PRs only (never forks), no drafts, never the develop -> main promotion.
+    # No checkout: pull_request_target must not run PR code.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft &&
+      github.event.pull_request.head.ref != 'develop'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Enable auto-merge (squash)
+        env:
+          # PAT, not GITHUB_TOKEN: a merge made with GITHUB_TOKEN does not trigger push workflows (deploys).
+          GH_TOKEN: ${{ secrets.AUTO_MERGE_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::AUTO_MERGE_TOKEN is not set; auto-merge not enabled."
+            exit 0
+          fi
+          gh pr merge "$PR_URL" --auto --squash

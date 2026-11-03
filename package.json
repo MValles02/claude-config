@@ -1,0 +1,12 @@
+{
+  "name": "claude-config",
+  "private": true,
+  "packageManager": "pnpm@12.6.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check": "node -e \"JSON.parse(require('fs').readFileSync('settings.json','utf8'))\" && node tests/guard-cases.mjs",
+    "prepare": "git config core.hooksPath .githooks"
+  }
+}

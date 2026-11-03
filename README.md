@@ -61,3 +61,13 @@ Como en cualquier repo: rama `chore/...`, commit, PR a `main` (corre gitleaks) y
 ## Qué queda excluido a propósito
 
 Credenciales, historial de conversaciones, sesiones, cache y `settings.local.json` nunca se suben (ver `.gitignore`). Las skills locales (`~/.claude/skills`) tampoco se versionan, y `syncClaudeAiSkills: false` evita cargar las skills de la cuenta de claude.ai.
+
+## Maintaining
+
+- One-time `pnpm install`: sets `core.hooksPath` to `.githooks`; the pre-commit hook runs gitleaks on staged changes via Docker.
+- `pnpm check`: verifies `settings.json` parses and runs `tests/guard-cases.mjs`.
+- CI runs the `checks` job and secrets-scan on every PR.
+- Workflow: feature branch, Conventional Commits, PR to `main`, squash merge.
+- `.gitignore` is an allowlist: every new tracked file needs a `!` entry.
+- Never commit secrets, `.credentials.json`, history, projects or sessions.
+- `.github/**`, `.githooks/**`, `.gitattributes`, `.npmrc` and `docs/WORKFLOW.md` are copies of `infra/standards/docs`: change them there first. Check drift with `node ../code/infra/scripts/check-standards.mjs --only claude-config`.
