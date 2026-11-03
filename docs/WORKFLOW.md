@@ -8,6 +8,10 @@ This file is identical in every documentation/configuration repo (infra, claude-
 - Work on a feature branch (`feat/`, `fix/`, `chore/`, `docs/`) and open a PR into `main`. It is merged with **squash**; commits and PR titles follow Conventional Commits.
 - Nothing is deployed from these repos.
 
+## Auto-merge
+
+`.github/workflows/auto-merge.yml` enables auto-merge (squash) on every non-draft PR opened from a branch of this repo, Dependabot's included, so it merges itself once `checks` is green. The job uses the `AUTO_MERGE_TOKEN` secret (a fine-grained PAT, stored as both an Actions and a Dependabot secret) so the merge triggers push workflows; without the secret it skips with a notice.
+
 ## CI gate
 
 `.github/workflows/ci.yml` runs on every pull request. The `checks` job runs gitleaks over the PR commits, installs with `pnpm install --frozen-lockfile` and runs `pnpm run check`. `checks` is the required status check on `main`. It is not strict ("require branches to be up to date"): a deliberate solo-developer tradeoff, since `strict=true` forces every open PR to update and re-run CI after each merge.
