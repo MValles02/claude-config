@@ -9,7 +9,6 @@ mcpServers:
       args: ["-y", "@playwright/mcp@0.0.83", "--headless", "--isolated", "--browser", "msedge", "--output-dir", "C:/Users/Mateo/AppData/Local/Temp/playwright-mcp"]
 model: sonnet
 effort: medium
-maxTurns: 36
 color: blue
 ---
 

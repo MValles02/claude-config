@@ -7,7 +7,6 @@ mcpServers:
 model: sonnet
 effort: medium
 omitClaudeMd: true
-maxTurns: 24
 color: orange
 ---
 

@@ -5,7 +5,6 @@ tools: Read, Grep, Glob, mcp__codegraph__codegraph_explore
 model: sonnet
 effort: low
 omitClaudeMd: true
-maxTurns: 16
 color: cyan
 ---
 
