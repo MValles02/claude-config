@@ -51,7 +51,8 @@ Luego:
 
 - TypeScript LSP: `npm i -g typescript-language-server typescript`; el plugin `typescript-lsp` se activa desde `enabledPlugins`. Da diagnósticos tras cada edición y la herramienta `LSP` (definiciones, referencias, tipos).
 - Mercado Pago: el plugin `mercadopago` queda en `false` en `enabledPlugins` (sus hooks corren en cada prompt y en casi cada herramienta). Solo se activa en gastar-app, en scope local: desde `~/code/gastar-app`, `claude plugin enable mercadopago@claude-plugins-official --scope local` (queda en su `.claude/settings.local.json`, sin versionar).
-- Herramientas del orquestador: usa `disallowedTools` (lista negra), así que hereda todo lo que agregue la app (navegador integrado, conectores de claude.ai, `ccd_*`, ToolSearch). Qué subagentes puede lanzar se controla con `permissions.deny` `Agent(...)` en `settings.json`; Claude in Chrome pide confirmación (`ask`).
+- Herramientas del orquestador: usa `disallowedTools` (lista negra), así que hereda todo lo que agregue la app (navegador integrado, conectores de claude.ai, `ccd_*`, ToolSearch). Qué subagentes puede lanzar se controla con `permissions.deny` `Agent(...)` en `settings.json`.
+- Permisos: el modo `auto` más una allowlist amplia (git, gh, pnpm, docker local, navegador integrado, Cloudflare) evitan confirmaciones de rutina. `ask` queda solo para decisiones reales (merges con `gh pr merge`, secretos, `sudo`, servicios y mutaciones en el VPS) y `deny` bloquea lo destructivo (force-push, `--no-verify`, `.env`, borrar volúmenes, `rm -rf` del home).
 - Logins de prueba para los chequeos de UI: el `verifier` usa los usuarios que define cada repo (script de seed o helpers de e2e); no hay archivo de credenciales en `~/.claude`.
 
 ## Sincronizar cambios
